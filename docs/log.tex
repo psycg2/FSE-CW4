@@ -14,36 +14,55 @@
     \begin{center}
 
     \huge Test Failures \\
-    \vspace{10mm}
+    \vspace{5mm}
     \small
     \begin{tabular}{|c|c|c|c|c|}
         \hline
         Test & Date & Reason For Failure & Fixes & Author \\
         \hline
         nullTest & 30/4/18 & \makecell{The public String "emailMessage" was set to return \\ the function "emailMessage()"
-        which meant \\ it was a recursive and it was keep on running \\ until a stack overflow occurced.} &
-        \makecell {The fix was to simply remove the \\ brackets so it was no \\ longer a recursive method} \\
+        which meant \\ it was a recursive and it was keep on running until a stack overflow occurced.} &
+        \makecell {The fix was to simply remove the \\ brackets so it was no \\ longer a recursive method} & C/O \\
         \hline
-
-        stringTest & 30/4/18 \\
-        setterTest & 30/4/18 \\
-        eMessageAsEmpty & 30/4/18 \\
-        fullTest & 30/4/18 \\
-        invalidConstructor & 30/4/18 \\
+        stringTest & 30/4/18 & \makecell{Subject is allowed to be NULL} & \makecell{NULL constructor intializes all \\
+        strings to empty} & C/O \\
+        \hline
+        setterTest & 30/4/18 & \makecell{See nullTest} & \makecell{See nullTest} & C/O \\
+        \hline
+        eMessageAsEmpty & 30/4/18 & \makecell{See nullTest} & \makecell{See nullTest} & C/O \\
+        \hline
+        fullTest & 30/4/18 & \makecell{See nullTest} & \makecell{See nullTest} & C/O \\
+        \hline
+        invalidConstructor & 30/4/18 & \makecell{The constructor permits invalid email addresses} & \makecell{Redirect the
+        assignment through \\ the setter fucntion.} & C/O \\
         \hline
     \end{tabular}
 
-    \vspace{10mm}
+    \vspace{100mm}
     \huge Test Passes \\
-    \vspace{10mm}
+    \vspace{5mm}
     \small
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|c|c|c|}
         \hline
-        Test & Date & Fixes & Author \\
+        Test & Date & Author \\
         \hline
-        senderAsInvalid & 30/4/18 \\
-        receiverAsInvalid & 30/4/18 \\
-        subjectAsEmpty & 30/4/18 \\
+        senderAsInvalid & 30/4/18 & C/O \\
+        \hline
+        receiverAsInvalid & 30/4/18 & C/O \\
+        \hline
+        subjectAsEmpty & 30/4/18 & C/O \\
+        \hline
+        nullTest & 30/4/18 & C/O \\
+        \hline
+        stringTest & 30/4/18 & C/O \\
+        \hline
+        setterTest & 30/4/18 & C/O \\
+        \hline
+        eMessageAsEmpty & 30/4/18 & C/O \\
+        \hline
+        fullTest & 30/4/18 & C/O \\
+        \hline
+        invalidConstructor & 30/4/18 & C/O \\
         \hline
     \end{tabular}
 

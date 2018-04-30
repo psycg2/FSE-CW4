@@ -6,17 +6,17 @@ public class CompanyEmail {
     private String emailMessage;
     
     public CompanyEmail() {
-        fromAddress = null;
-        toAddress = null;
-        subjectLine = null;
-        emailMessage = null;
+        fromAddress = "";
+        toAddress = "";
+        subjectLine = "";
+        emailMessage = "";
     }
     
     public CompanyEmail(String fAddress, String tAddress, String subLine, String eMessage) {
-    	fromAddress = fAddress;
-    	toAddress = tAddress;
-    	subjectLine = subLine;
-    	emailMessage = eMessage;
+    	setFrom(fAddress);
+    	setSubject(subLine);
+    	setTo(tAddress);
+    	setMessage(eMessage);
     }
     
     public String fromAddress() {
@@ -57,10 +57,10 @@ public class CompanyEmail {
     
     public boolean isValid() {
         boolean isComplete = true;
-        if (fromAddress == null) isComplete = false;
-        if (toAddress == null) isComplete = false;
-        if (subjectLine == null) isComplete = false;
-        if (emailMessage == null) isComplete = false;
+        if (fromAddress == "") isComplete = false;
+        if (toAddress == "") isComplete = false;
+        if (subjectLine == "") isComplete = false;
+        if (emailMessage == "") isComplete = false;
         return isComplete;
     }
     

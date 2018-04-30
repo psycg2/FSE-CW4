@@ -35,10 +35,10 @@ public class CompanyEmailTest{
         String toAddress = blankEmail.toAddress();
         String subLine = blankEmail.subjectLine();
         String eMessage = blankEmail.emailMessage();
-        assertEquals(fromAddress, null);
-        assertEquals(toAddress, null);
-        assertEquals(subLine, null);
-        assertEquals(eMessage, null);
+        assertEquals(fromAddress, "");
+        assertEquals(toAddress, "");
+        assertEquals(subLine, "");
+        assertEquals(eMessage, "");
         assertFalse(blankEmail.isValid());
     }
 
@@ -70,7 +70,7 @@ public class CompanyEmailTest{
     public void senderAsInvalid(){
         blankEmail.setFrom("psyoba.nottingham.ac.uk");
         String fromAddress = blankEmail.fromAddress();
-        assertEquals(fromAddress, null);
+        assertEquals(fromAddress, "");
 
     }
 
@@ -78,7 +78,7 @@ public class CompanyEmailTest{
     public void receiverAsInvalid(){
         blankEmail.setTo("psycg2.nottingham.ac.uk");
         String toAddress = blankEmail.toAddress();
-        assertEquals(toAddress, null);
+        assertEquals(toAddress, "");
     }
 
     @Test
