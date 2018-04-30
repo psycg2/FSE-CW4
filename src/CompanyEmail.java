@@ -32,7 +32,7 @@ public class CompanyEmail {
     }
     
     public String emailMessage() {
-        return emailMessage();
+        return emailMessage;
     }
     
     public void setFrom(String fromAddr) {

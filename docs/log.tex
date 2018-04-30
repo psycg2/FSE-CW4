@@ -1,33 +1,55 @@
 \documentclass{article}
-\documentclass{article}
-\documentclass{article}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Welcome to Overleaf --- just edit your LaTeX on the left,
-% and we'll compile it for you on the right. If you give
-% someone the link to this page, they can edit at the same
-% time. See the help menu above for more info. Enjoy!
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass{article} % Loads settings for the document layout
+\usepackage{makecell}
+\usepackage{geometry}
+\geometry{landscape}
+\begin{document}
+\oddsidemargin = 1pt
+\evensidemargin = 1pt
 
-% Preambel
 
-% The following settings are used for title generation and will show up in the
-% main document where the \maketitle command is set.
-\title{Title of my document}
-\date{2013-09-01}
-\author{John Doe}
+    \title{FSE CW4}
+    \author{Team CYPer}
 
-% Main document
+    \maketitle
+    \begin{center}
 
-\begin{document} % The document starts here
+    \huge Test Failures \\
+    \vspace{10mm}
+    \small
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Test & Date & Reason For Failure & Fixes & Author \\
+        \hline
+        nullTest & 30/4/18 & \makecell{The public String "emailMessage" was set to return \\ the function "emailMessage()"
+        which meant \\ it was a recursive and it was keep on running \\ until a stack overflow occurced.} &
+        \makecell {The fix was to simply remove the \\ brackets so it was no \\ longer a recursive method} \\
+        \hline
 
-\maketitle % Creates the titlepage
-\pagenumbering{gobble} % Turns off page numbering
-\newpage % Starts a new page
-\pagenumbering{arabic} % Turns on page numbering
+        stringTest & 30/4/18 \\
+        setterTest & 30/4/18 \\
+        eMessageAsEmpty & 30/4/18 \\
+        fullTest & 30/4/18 \\
+        invalidConstructor & 30/4/18 \\
+        \hline
+    \end{tabular}
 
-Hello World!
+    \vspace{10mm}
+    \huge Test Passes \\
+    \vspace{10mm}
+    \small
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Test & Date & Fixes & Author \\
+        \hline
+        senderAsInvalid & 30/4/18 \\
+        receiverAsInvalid & 30/4/18 \\
+        subjectAsEmpty & 30/4/18 \\
+        \hline
+    \end{tabular}
 
-\end{document} % The document ends here
+
+
+    \end{center}
+
+
+\end{document}
