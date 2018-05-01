@@ -1,3 +1,4 @@
+import org.jboss.arquillian.test.spi.annotation.TestScoped;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -9,7 +10,6 @@ import static org.junit.Assert.*;
 public class CompanyProjectTest {
 
     private CompanyProject newProject;
-    private CompanyProject newID;
 
     @Before
     public void setup(){
@@ -23,10 +23,23 @@ public class CompanyProjectTest {
     }
 
     @Test
+    public void nextPhaseIDTest(){
+        boolean nextPhaseTrue = newProject.nextPhase();
+        assertTrue(nextPhaseTrue);
+    }
+
+    @Test
     public void projectTitleTest(){
         String ProjectTitle = newProject.getPTitle();
         assertEquals(ProjectTitle, "First Project");
     }
+
+    @Test
+    public void contactExistsFalseTest(){
+        Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
+        assertFalse(addressExists);
+    }
+
 
 }
 

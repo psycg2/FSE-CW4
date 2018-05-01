@@ -97,7 +97,8 @@ public class CompanyEmailTest{
         assertEquals(toAddress, null);
 
     }
-     @Test
+
+    @Test
     public void stringTest(){
         assertEquals(blankEmail.toString(), "[no subject]");
         assertEquals(populatedEmail.toString(),"Test email" );
