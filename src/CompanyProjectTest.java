@@ -14,19 +14,16 @@ public class CompanyProjectTest {
     @Before
     public void setup(){
         newProject = new CompanyProject("First Project");
-        newID = new CompanyProject("1");
     }
 
     @Test
-    public void ProjectIdTest(){
+    public void projectIdTest(){
         int PhaseID = newProject.getPID();
         assertEquals(PhaseID, 1);
-        int PhaseID2 = PhaseID+1;
-        assertEquals(PhaseID2, 2);
     }
 
     @Test
-    public void ProjectTitleTest(){
+    public void projectTitleTest(){
         String ProjectTitle = newProject.getPTitle();
         assertEquals(ProjectTitle, "First Project");
     }
