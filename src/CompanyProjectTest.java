@@ -8,11 +8,17 @@ import static org.junit.Assert.*;
 
 public class CompanyProjectTest {
 
-    private CompanyProject newContact;
+    private CompanyProject newProject;
 
     @Before
     public void setup(){
-        newContact = new CompanyProject();
+        newProject = new CompanyProject("Alex");
+    }
+
+    @Test
+    public void projectIDTest(){
+        String ProjectTitle = newProject.getPTitle();
+        assertEquals(ProjectTitle, "Alex");
     }
 }
 
