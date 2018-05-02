@@ -1,5 +1,8 @@
 import org.jboss.arquillian.test.spi.annotation.TestScoped;
 import org.junit.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 // Authors:
@@ -17,13 +20,13 @@ public class CompanyProjectTest {
     }
 
     @Test
-    public void projectIdTest(){
+    public void firstProjectIdTest(){
         int PhaseID = newProject.getPID();
         assertEquals(PhaseID, 1);
     }
 
     @Test
-    public void nextPhaseIDTest(){
+    public void nextPhaseTest(){
         boolean nextPhaseTrue = newProject.nextPhase();
         assertTrue(nextPhaseTrue);
     }
@@ -35,9 +38,42 @@ public class CompanyProjectTest {
     }
 
     @Test
+    public void projectPhasesTitleTest(){
+        String PhaseTest;
+        String [] Phases = new String [3];
+        Phases[0] = "Design";
+        Phases[1] = "Implementation";
+        Phases[2] = "Testing";
+        int i = 0;
+        while(i<3){
+            PhaseTest = Phases[i];
+            assertEquals(newProject.getPhaseByName(), PhaseTest);
+            newProject.nextPhase();
+            i++;
+        }
+    }
+
+    @Test
     public void contactExistsFalseTest(){
         Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
         assertFalse(addressExists);
+    }
+
+    @Test
+    public void contactExistsTrueTest(){
+        ArrayList<String> Contacts = new ArrayList<String>();
+        Contacts.add("psyaa12@nottingham.ac.uk");
+        newProject.addContact("psyaa12@nottingham.ac.uk");
+        Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
+        assertTrue(addressExists);
+    }
+
+    @Test
+    public void getContactTest(){
+        ArrayList<String> Contacts = new ArrayList<String>();
+        Contacts.add("psyaa12@nottingham.ac.uk");
+        newProject.addContact("psyaa12@nottingham.ac.uk");
+        assertEquals(newProject.getProjectContacts(), Contacts);
     }
 
 
