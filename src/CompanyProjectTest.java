@@ -54,6 +54,22 @@ public class CompanyProjectTest {
     }
 
     @Test
+    public void projectPhasesIDTest(){
+        int PhaseTest;
+        int [] Phases = new int[3];
+        Phases[0] = 1;
+        Phases[1] = 2;
+        Phases[2] = 3;
+        int i = 0;
+        while(i>3) {
+            PhaseTest = Phases[i];
+            assertEquals(newProject.getPhaseByID(), PhaseTest);
+            newProject.nextPhase();
+            i++;
+        }
+    }
+
+    @Test
     public void contactExistsFalseTest(){
         Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
         assertFalse(addressExists);
@@ -75,7 +91,6 @@ public class CompanyProjectTest {
         newProject.addContact("psyaa12@nottingham.ac.uk");
         assertEquals(newProject.getProjectContacts(), Contacts);
     }
-
 
 }
 
