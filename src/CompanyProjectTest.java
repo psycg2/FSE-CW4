@@ -1,4 +1,3 @@
-import org.jboss.arquillian.container.test.api.ShouldThrowException;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import static org.junit.Assert.*;
 public class CompanyProjectTest {
 
     private CompanyProject newProject;
-    private CompanyProject testProject;
+    CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
 
     @Before
     public void setup(){
@@ -111,6 +110,12 @@ public class CompanyProjectTest {
         newProject.nextPhase();
         String phaseAndName2 = newProject.toString();
         assertEquals(phaseAndName2, "First Project [Implementation]");
+    }
+
+    @Test
+    public void addEmailTest() {
+        newProject.addEmail(populatedEmail);
+        assertEquals(populatedEmail, );
     }
 
 }
