@@ -62,7 +62,7 @@ public class CompanyProjectTest {
         Phases[1] = 2;
         Phases[2] = 3;
         int i = 0;
-        while(i>3) {
+        while(i<3) {
             PhaseTest = Phases[i];
             assertEquals(newProject.getPhaseByID(), PhaseTest);
             newProject.nextPhase();
@@ -78,7 +78,7 @@ public class CompanyProjectTest {
 
     @Test
     public void contactExistsTrueTest(){
-        ArrayList<String> Contacts = new ArrayList<String>();
+        ArrayList<String> Contacts = new ArrayList<>();
         Contacts.add("psyaa12@nottingham.ac.uk");
         newProject.addContact("psyaa12@nottingham.ac.uk");
         Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
@@ -87,7 +87,7 @@ public class CompanyProjectTest {
 
     @Test
     public void getContactTest(){
-        ArrayList<String> Contacts = new ArrayList<String>();
+        ArrayList<String> Contacts = new ArrayList<>();
         Contacts.add("psyaa12@nottingham.ac.uk");
         newProject.addContact("psyaa12@nottingham.ac.uk");
         assertEquals(newProject.getProjectContacts(), Contacts);
@@ -115,7 +115,7 @@ public class CompanyProjectTest {
     public void addEmailTest() {
         CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
         newProject.addEmail(populatedEmail);
-        assertEquals(newProject.isContact("psycg2@nottingham.ac.uk"), true);
+        assertTrue(newProject.isContact("psyoba@nottingham.ac.uk"));
     }
 
 }
