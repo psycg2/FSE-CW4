@@ -1,4 +1,4 @@
-import org.jboss.arquillian.test.spi.annotation.TestScoped;
+import org.jboss.arquillian.container.test.api.ShouldThrowException;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -8,11 +8,11 @@ import static org.junit.Assert.*;
 // Authors:
 //  Alexandros Araouzos
 //  Antontis Kourris
-//  Christiana Efstratiou
 
 public class CompanyProjectTest {
 
     private CompanyProject newProject;
+    private CompanyProject testProject;
 
     @Before
     public void setup(){
@@ -23,10 +23,13 @@ public class CompanyProjectTest {
     public void firstProjectIdTest(){
         int PhaseID = newProject.getPID();
         assertEquals(PhaseID, 1);
+        newProject.nextPhase();
+        int PhaseID2 = newProject.getPhaseByID();
+        assertEquals(PhaseID2, 2);
     }
 
     @Test
-    public void nextPhaseTest(){
+    public void nextPhaseTrueTest(){
         boolean nextPhaseTrue = newProject.nextPhase();
         assertTrue(nextPhaseTrue);
     }
@@ -90,6 +93,24 @@ public class CompanyProjectTest {
         Contacts.add("psyaa12@nottingham.ac.uk");
         newProject.addContact("psyaa12@nottingham.ac.uk");
         assertEquals(newProject.getProjectContacts(), Contacts);
+    }
+
+    @Test
+    public void getPhaseNameTest(){
+        String PhaseName = newProject.getPhaseByName();
+        assertEquals(PhaseName, "Design");
+        newProject.nextPhase();
+        String phaseName2 = newProject.getPhaseByName();
+        assertEquals(phaseName2, "Implementation");
+    }
+
+    @Test
+    public void toStringTest(){
+        String phaseAndName =  newProject.toString();
+        assertEquals(phaseAndName, "First Project [Design]");
+        newProject.nextPhase();
+        String phaseAndName2 = newProject.toString();
+        assertEquals(phaseAndName2, "First Project [Implementation]");
     }
 
 }
