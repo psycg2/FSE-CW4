@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 public class CompanyProjectTest {
 
     private CompanyProject newProject;
-    CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
 
     @Before
     public void setup(){
@@ -114,8 +113,9 @@ public class CompanyProjectTest {
 
     @Test
     public void addEmailTest() {
+        CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
         newProject.addEmail(populatedEmail);
-        assertEquals(populatedEmail, );
+        assertEquals(newProject.isContact("psycg2@nottingham.ac.uk"), true);
     }
 
 }
