@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 // Authors:
 //  Alexandros Araouzos
 //  Antontis Kourris
+//  Christiana Efstratiou
 
 public class CompanyProjectTest {
 
@@ -27,7 +28,7 @@ public class CompanyProjectTest {
     }
 
     @Test
-    public void nextPhaseTrueTest(){
+    public void nextPhaseTest(){
         boolean nextPhaseTrue = newProject.nextPhase();
         assertTrue(nextPhaseTrue);
     }
@@ -36,6 +37,13 @@ public class CompanyProjectTest {
     public void projectTitleTest(){
         String ProjectTitle = newProject.getPTitle();
         assertEquals(ProjectTitle, "First Project");
+    }
+
+    @Test
+    public void shortProjectTitleTest(){
+        newProject = new CompanyProject("First");
+        String ProjectTitle = newProject.getPTitle();
+        assertEquals(ProjectTitle, "");
     }
 
     @Test
@@ -71,13 +79,13 @@ public class CompanyProjectTest {
     }
 
     @Test
-    public void contactExistsFalseTest(){
+    public void isContactFalseTest(){
         Boolean addressExists = newProject.isContact("psyaa12@nottingham.ac.uk");
         assertFalse(addressExists);
     }
 
     @Test
-    public void contactExistsTrueTest(){
+    public void isContactTrueTest(){
         ArrayList<String> Contacts = new ArrayList<>();
         Contacts.add("psyaa12@nottingham.ac.uk");
         newProject.addContact("psyaa12@nottingham.ac.uk");
@@ -96,10 +104,10 @@ public class CompanyProjectTest {
     @Test
     public void getPhaseNameTest(){
         String PhaseName = newProject.getPhaseByName();
-        assertEquals(PhaseName, "Design");
+        assertEquals(PhaseName, "Feasibility");
         newProject.nextPhase();
         String phaseName2 = newProject.getPhaseByName();
-        assertEquals(phaseName2, "Implementation");
+        assertEquals(phaseName2, "Design");
     }
 
     @Test
@@ -112,11 +120,26 @@ public class CompanyProjectTest {
     }
 
     @Test
-    public void addEmailTest() {
+    public void addEmailTestSender() {
         CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
         newProject.addEmail(populatedEmail);
         assertTrue(newProject.isContact("psyoba@nottingham.ac.uk"));
     }
+
+    @Test
+    public void addEmailTestReceiver(){
+        CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
+        newProject.addEmail(populatedEmail);
+        assertTrue(newProject.isContact("psycg2@nottingham.ac.uk"));
+    }
+
+    @Test
+    public void addInvalidEmail(){
+        CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "", "", "");
+        newProject.addEmail(populatedEmail);
+        assertFalse(newProject.isContact("psyoba@nottingham.ac.uk"));
+    }
+
 
 }
 
