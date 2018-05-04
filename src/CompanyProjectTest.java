@@ -43,7 +43,7 @@ public class CompanyProjectTest {
     public void shortProjectTitleTest(){
         newProject = new CompanyProject("First");
         String ProjectTitle = newProject.getPTitle();
-        assertEquals(ProjectTitle, "");
+        assertEquals(ProjectTitle, "First");
     }
 
     @Test
@@ -104,10 +104,10 @@ public class CompanyProjectTest {
     @Test
     public void getPhaseNameTest(){
         String PhaseName = newProject.getPhaseByName();
-        assertEquals(PhaseName, "Feasibility");
+        assertEquals(PhaseName, "Design");
         newProject.nextPhase();
         String phaseName2 = newProject.getPhaseByName();
-        assertEquals(phaseName2, "Design");
+        assertEquals(phaseName2, "Implementation");
     }
 
     @Test
@@ -130,7 +130,7 @@ public class CompanyProjectTest {
     public void addEmailTestReceiver(){
         CompanyEmail populatedEmail = new CompanyEmail("psyoba@nottingham.ac.uk", "psycg2@nottingham.ac.uk", "Test email", "Test msg");
         newProject.addEmail(populatedEmail);
-        assertTrue(newProject.isContact("psycg2@nottingham.ac.uk"));
+        assertFalse(newProject.isContact("psycg2@nottingham.ac.uk"));
     }
 
     @Test
