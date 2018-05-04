@@ -1,16 +1,12 @@
 
 public class CompanyEmail {
-    private String fromAddress;
-    private String toAddress;
-    private String subjectLine;
-    private String emailMessage;
-    
-    public CompanyEmail() {
-        fromAddress = "";
-        toAddress = "";
-        subjectLine = "";
-        emailMessage = "";
-    }
+    private String fromAddress = "";
+    private String toAddress = "";
+    private String subjectLine = "";
+    private String emailMessage = "";
+    // Set to "" to avoid errors from null pointers
+
+    public CompanyEmail() {}
     
     public CompanyEmail(String fAddress, String tAddress, String subLine, String eMessage) {
     	setFrom(fAddress);
@@ -36,13 +32,13 @@ public class CompanyEmail {
     }
     
     public void setFrom(String fromAddr) {
-        if (fromAddr.contains("@")) {
+        if (fromAddr.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) { //adapted to a regexp compliant with rfc 5322
             fromAddress = fromAddr;
         }
     }
     
     public void setTo(String toAddr) {
-        if (toAddr.contains("@")) {
+        if (toAddr.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) { //adapted to a regexp compliant with rfc 5322
             toAddress = toAddr;
         }
     }
@@ -57,10 +53,10 @@ public class CompanyEmail {
     
     public boolean isValid() {
         boolean isComplete = true;
-        if (fromAddress == "") isComplete = false;
-        if (toAddress == "") isComplete = false;
-        if (subjectLine == "") isComplete = false;
-        if (emailMessage == "") isComplete = false;
+        if (fromAddress.equals("")) isComplete = false;
+        if (toAddress.equals("")) isComplete = false;
+        if (subjectLine.equals("")) isComplete = false;
+        if (emailMessage.equals("")) isComplete = false;
         return isComplete;
     }
     
