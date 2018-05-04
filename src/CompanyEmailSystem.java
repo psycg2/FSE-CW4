@@ -1,3 +1,5 @@
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 public class CompanyEmailSystem {
@@ -49,7 +51,7 @@ public class CompanyEmailSystem {
         System.out.println("What do you want to do?\n P = List [P]rojects, [num] = Open Project [num], A = [A]dd Project, X = E[x]it");
         Scanner in = new Scanner(System.in);
         while (in.hasNextLine()){
-            String s = in.next().toUpperCase().trim();// to allow for lower case inputs and stray spaces
+            String s = in.nextLine().toUpperCase().trim();// to allow for lower case inputs and stray spaces
             try{
                 if(currentProjShowing == -1) {// No project value is -1, assumed 0 here
                     if (s.equals("P")) {
@@ -106,7 +108,6 @@ public class CompanyEmailSystem {
     
     private static void addProject(Scanner in) {
         System.out.println("What is the title of the project?");
-        in.nextLine(); // to remove read-in bug
         String title = in.nextLine();
         AllProjects.add(new CompanyProject(title));
         System.out.println("[Project added]");
@@ -140,7 +141,7 @@ public class CompanyEmailSystem {
     private static void listPhases() {
         CompanyProject cp = AllProjects.get(currentProjShowing);
         for (int x=0; x < cp.getPhaseByID(); x++ ) {
-            System.out.println((x+1)+") "+cp.getPhaseByName()+" - "+cp.getEmailsForPhase(x).size()+" Emails");
+            System.out.println((x+1)+") "+cp.getPhaseByName()+" - "+(cp.getEmailsForPhase(x)!=null?cp.getEmailsForPhase(x).size():"0")+" Emails");
         }
     }
     
@@ -154,7 +155,6 @@ public class CompanyEmailSystem {
     
     private static void addEmail(Scanner in) {
         System.out.println("Which email address is it from?");
-        in.nextLine(); //to remove read-in bug
         String fromAddress = in.nextLine();
         System.out.println("Which email address is it to?");
         String toAddress = in.nextLine();
